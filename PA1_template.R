@@ -9,7 +9,7 @@ The following code assumes the working directory in R has been set with the setw
 
 The dataset can be found here: [Activity monitoring data [52k]] (https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip)  
 
- 
+
 ####1. Load the data from "activity.csv"" into data frame "activity"
 
 ```{r load data set}
@@ -20,7 +20,7 @@ str(activity)
 head(activity)
 ```
 
-  
+
 ####2. Process/transform the data as necessary into a format suitable for analysis
 
 ```{r process/transform data}
@@ -37,7 +37,7 @@ str(activity_nona)
 head(activity_nona)
 ```
 
-  
+
 ####3. Ignoring missing values, calculate the total number of steps taken per day, make a histogram of total number of steps taken per day and calculate the mean and median total number of steps taken per day
 
 ```{r calculate total steps per day}
@@ -117,9 +117,9 @@ Create a new dataset "activity_imputed" where NA values for the step variable ar
 ```{r replace step NAs with associated 5-minute interval mean}
 activity_imputed <- activity 
 for (i in 1:nrow(activity_imputed)) {
-    if (is.na(activity_imputed$steps[i])) {
-        activity_imputed$steps[i] <- IntervalMeans[which(activity_imputed$interval[i] == IntervalMeans$interval), ]$mean
-    }
+        if (is.na(activity_imputed$steps[i])) {
+                activity_imputed$steps[i] <- IntervalMeans[which(activity_imputed$interval[i] == IntervalMeans$interval), ]$mean
+        }
 }
 ```
 
